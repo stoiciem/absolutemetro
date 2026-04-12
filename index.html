@@ -6,38 +6,25 @@
 </head>
 <body>
 
-<button onclick="playClick1()">click</button1>
-<button onclick="playClick2()">click</button2>
+<button onclick="playClick(100, 0.002, 0.1)">kick</button1>
+<button onclick="playClick(1000, 0.002, 0.1)">snare</button2>
+<button onclick="playClick(1000, 0.002, 0.1)">accent</button3>
 
 <script>
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-function playClick1() {
+function playClick(frequency = 1000, duration = 0.002, volume = 0.1) {
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
 
   osc.connect(gain);
   gain.connect(audioCtx.destination);
 
-  osc.frequency.value = 1000; // pitch of click
-  gain.gain.value = 0.1;      // volume
+  osc.frequency.value = frequency; // pitch of click
+  gain.gain.value = volume;        // volume
 
   osc.start();
-  osc.stop(audioCtx.currentTime + 0.002); // very short sound
-}
-
-function playClick2() {
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-
-  osc.frequency.value = 1000; // pitch of click
-  gain.gain.value = 0.1;      // volume
-
-  osc.start();
-  osc.stop(audioCtx.currentTime + 0.05); // very short sound
+  osc.stop(audioCtx.currentTime + duration); // very short sound
 }
 
 
