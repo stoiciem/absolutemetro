@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>metronome test</title>
+</head>
+<body>
+
+<button onclick="playClick()">click</button>
+
+<script>
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playClick() {
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.frequency.value = 1000; // pitch of click
+  gain.gain.value = 0.1;      // volume
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.05); // very short sound
+}
+</script>
+
+</body>
+</html>
