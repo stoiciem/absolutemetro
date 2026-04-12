@@ -6,7 +6,8 @@
 </head>
 <body>
 
-<button onclick="playClick()">click</button>
+<button onclick="playClick1()">click</button1>
+<button onclick="playClick2()">click</button2>
 
 <script>
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -24,6 +25,22 @@ function playClick() {
   osc.start();
   osc.stop(audioCtx.currentTime + 0.002); // very short sound
 }
+
+function playClick2() {
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.frequency.value = 1000; // pitch of click
+  gain.gain.value = 0.1;      // volume
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.05); // very short sound
+}
+
+
 </script>
 
 </body>
