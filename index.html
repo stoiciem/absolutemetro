@@ -6,9 +6,12 @@
 </head>
 <body>
 
+// we want to display a title so we know which version of the code we are testing
+<h1>metronome test - 001</h1>
+
 <button onclick="playClick(100, 0.002, 0.1)">kick</button1>
 <button onclick="playClick(1000, 0.002, 0.1)">snare</button2>
-<button onclick="playClick(1000, 0.002, 0.1)">accent</button3>
+<button onclick="playClick(10000, 0.002, 0.1)">accent</button3>
 
 <script>
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
