@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>metronome test - 006</h1>
+<h1>metronome test - 007</h1>
 
 <button onclick="playClick(100, 0.002, 0.1)">kick</button>
 <button onclick="playClick(1000, 0.002, 0.1)">snare</button>
@@ -120,6 +120,8 @@ function playClick(frequency = 1000, duration = 0.002, volume = 0.1) {
   gain.gain.setValueAtTime(0, now);
   gain.gain.linearRampToValueAtTime(volume, now + duration / 2); // quick attack
   gain.gain.linearRampToValueAtTime(0, now + duration);
+
+  console.log("timer id:", timerID);
 
   osc.start();
   osc.stop(audioCtx.currentTime + duration); // very short sound
