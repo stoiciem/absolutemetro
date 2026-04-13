@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>metronome test - 005</h1>
+<h1>metronome test - 006</h1>
 
 <button onclick="playClick(100, 0.002, 0.1)">kick</button>
 <button onclick="playClick(1000, 0.002, 0.1)">snare</button>
@@ -135,6 +135,7 @@ function start() {
   nextNoteTime = audioCtx.currentTime + 0.05; // Start a little in the future to allow scheduling
   currentBeat = 0;
 
+  clearInterval(timerID);
   timerID = setInterval(scheduler, lookahead);
 
   // const bpm = Number(bpmSlider.value);
