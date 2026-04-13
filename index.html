@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>metronome test - 002</h1>
+<h1>metronome test - 003</h1>
 
 <button onclick="playClick(100, 0.002, 0.1)">kick</button>
 <button onclick="playClick(1000, 0.002, 0.1)">snare</button>
@@ -62,7 +62,7 @@ durationSlider.addEventListener('input', () => {
 });
 
 
-function playClick(frequency = pitchSlider.value, duration = durationSlider.value, volume = volumeSlider.value) {
+function playClick(frequency = 1000, duration = 0.002, volume = 0.1) {
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
 
@@ -82,7 +82,7 @@ function start() {
   const bpm = bpmSlider.value;
   const interval = 60000 / bpm; // milliseconds
 
-  intervalId = setInterval(() => playClick(), interval);
+  intervalId = setInterval(() => playClick(frequency = pitchSlider.value, duration = durationSlider.value, volume = volumeSlider.value), interval);
 }
 
 function stop() {
